@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinhakoCrypto — Personal Crypto Portfolio Journal</title>
+    <meta name="description" content="CoinhakoCrypto is a private, distraction-free crypto portfolio tracker and investment journal. Track holdings, transactions, and performance — all stored locally on your device.">
+    <style>
+        :root {
+            --bg: #0b0f1a;
+            --bg-2: #111726;
+            --card: #161d2f;
+            --border: #232c44;
+            --text: #e8ecf5;
+            --text-2: #a3aec6;
+            --text-3: #6f7a93;
+            --brand: #6366f1;
+            --brand-2: #8b5cf6;
+            --accent: #22d3ee;
+            --gain: #22c55e;
+            --warn: #f59e0b;
+            --loss: #ef4444;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Nav */
+        header.nav {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(11,15,26,0.85);
+            backdrop-filter: saturate(160%) blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 24px; max-width: 1100px; margin: 0 auto;
+        }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: 0.2px; }
+        .brand-mark {
+            width: 32px; height: 32px; border-radius: 9px;
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+            display: grid; place-items: center; color: white; font-weight: 900;
+            box-shadow: 0 6px 18px rgba(99,102,241,0.45);
+        }
+        .nav-links a { color: var(--text-2); margin-left: 22px; font-size: 14px; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        /* Hero */
+        .hero {
+            position: relative; padding: 96px 0 64px;
+            background:
+                radial-gradient(900px 500px at 12% -10%, rgba(99,102,241,0.22), transparent 60%),
+                radial-gradient(800px 500px at 100% 10%, rgba(139,92,246,0.18), transparent 60%);
+        }
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 12px; border-radius: 999px;
+            background: rgba(99,102,241,0.12);
+            color: #c7d2fe; font-size: 12px; font-weight: 600;
+            border: 1px solid rgba(99,102,241,0.3);
+        }
+        .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+        h1.hero-title {
+            font-size: clamp(34px, 5.5vw, 56px);
+            line-height: 1.08; font-weight: 800; letter-spacing: -1px;
+            margin: 18px 0 18px; max-width: 880px;
+            background: linear-gradient(180deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .hero-sub {
+            color: var(--text-2); font-size: 17px; max-width: 760px;
+        }
+        .cta-row { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 18px; border-radius: 12px;
+            font-weight: 700; font-size: 14px; border: 1px solid transparent;
+            cursor: pointer; transition: transform .12s ease, background .12s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            color: white; box-shadow: 0 10px 30px rgba(99,102,241,0.35);
+        }
+        .btn-primary:hover { transform: translateY(-1px); text-decoration: none; }
+        .btn-ghost {
+            background: var(--card); color: var(--text);
+            border-color: var(--border);
+        }
+        .btn-ghost:hover { background: #1b243a; text-decoration: none; }
+
+        .hero-meta {
+            margin-top: 28px; display: flex; gap: 18px; flex-wrap: wrap;
+            color: var(--text-3); font-size: 13px;
+        }
+        .hero-meta .pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 10px; border-radius: 999px;
+            background: var(--bg-2); border: 1px solid var(--border);
+            color: var(--text-2); font-weight: 600;
+        }
+
+        /* Sections */
+        section { padding: 72px 0; }
+        .section-head { text-align: center; margin-bottom: 40px; }
+        .section-head h2 {
+            font-size: clamp(26px, 3.5vw, 36px); font-weight: 800; letter-spacing: -0.5px;
+        }
+        .section-head p { color: var(--text-2); margin-top: 10px; }
+
+        /* Feature grid */
+        .grid {
+            display: grid; gap: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px;
+            transition: transform .15s ease, border-color .15s ease;
+        }
+        .card:hover { transform: translateY(-2px); border-color: #2e3958; }
+        .card .icon {
+            width: 42px; height: 42px; border-radius: 10px;
+            display: grid; place-items: center;
+            background: rgba(99,102,241,0.14); color: var(--brand);
+            margin-bottom: 14px;
+            border: 1px solid rgba(99,102,241,0.28);
+        }
+        .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+        .card p { color: var(--text-2); font-size: 14px; }
+
+        .icon.violet { background: rgba(139,92,246,0.14); color: var(--brand-2); border-color: rgba(139,92,246,0.3); }
+        .icon.amber { background: rgba(245,158,11,0.14); color: var(--warn); border-color: rgba(245,158,11,0.3); }
+        .icon.teal { background: rgba(34,211,238,0.14); color: var(--accent); border-color: rgba(34,211,238,0.3); }
+        .icon.pink { background: rgba(236,72,153,0.14); color: #f472b6; border-color: rgba(236,72,153,0.3); }
+        .icon.green { background: rgba(34,197,94,0.14); color: var(--gain); border-color: rgba(34,197,94,0.3); }
+        .icon.orange { background: rgba(249,115,22,0.14); color: #fb923c; border-color: rgba(249,115,22,0.3); }
+
+        /* Showcase / split */
+        .split {
+            display: grid; gap: 28px;
+            grid-template-columns: 1.05fr 1fr; align-items: center;
+        }
+        @media (max-width: 880px) { .split { grid-template-columns: 1fr; } }
+        .split h2 { font-size: clamp(24px, 3.2vw, 32px); font-weight: 800; margin-bottom: 12px; letter-spacing: -0.4px; }
+        .split p { color: var(--text-2); margin-bottom: 14px; }
+        .checklist { list-style: none; margin-top: 14px; }
+        .checklist li {
+            display: flex; gap: 10px; align-items: flex-start;
+            padding: 8px 0; color: var(--text-2); font-size: 14.5px;
+        }
+        .checklist li::before {
+            content: "✓"; color: var(--gain); font-weight: 800; flex: 0 0 22px;
+            display: inline-grid; place-items: center;
+            width: 22px; height: 22px; border-radius: 999px;
+            background: rgba(34,197,94,0.12);
+        }
+
+        /* Mock device */
+        .device {
+            background: linear-gradient(180deg, #1a2238, #131a2c);
+            border: 1px solid var(--border); border-radius: 28px; padding: 14px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.02);
+        }
+        .device .screen {
+            background: var(--bg); border-radius: 18px; padding: 16px;
+            border: 1px solid #1f2740;
+        }
+        .device .row { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+        .device .bar {
+            height: 8px; border-radius: 6px; background: #243049;
+        }
+        .device .bar.fill1 { background: linear-gradient(90deg, var(--brand), var(--brand-2)); width: 62%; }
+        .device .bar.fill2 { background: linear-gradient(90deg, var(--accent), var(--brand)); width: 38%; }
+        .device .bar.fill3 { background: linear-gradient(90deg, var(--warn), var(--loss)); width: 24%; }
+        .device .kv { display: flex; justify-content: space-between; color: var(--text-3); font-size: 12px; margin: 6px 0; }
+
+        /* Values */
+        .values {
+            background: linear-gradient(180deg, rgba(99,102,241,0.06), transparent);
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        }
+        .value-grid {
+            display: grid; gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+        .value {
+            padding: 18px; background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+        .value h4 { font-size: 15px; margin-bottom: 4px; }
+        .value p { color: var(--text-2); font-size: 13.5px; }
+
+        /* FAQ */
+        details {
+            background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+            padding: 14px 16px; margin-bottom: 10px;
+        }
+        details summary {
+            cursor: pointer; font-weight: 600; color: var(--text);
+            list-style: none; display: flex; justify-content: space-between; align-items: center;
+        }
+        details summary::-webkit-details-marker { display: none; }
+        details summary::after {
+            content: "+"; color: var(--text-3); font-size: 22px; line-height: 1;
+            transition: transform .2s ease;
+        }
+        details[open] summary::after { content: "−"; }
+        details p { color: var(--text-2); margin-top: 10px; font-size: 14px; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 36px 0 28px;
+            color: var(--text-3); font-size: 13px;
+        }
+        .foot-grid {
+            display: grid; gap: 18px;
+            grid-template-columns: 1.4fr 1fr 1fr;
+        }
+        @media (max-width: 720px) { .foot-grid { grid-template-columns: 1fr; } }
+        .foot-grid h5 { color: var(--text); margin-bottom: 10px; font-size: 13px; letter-spacing: 0.6px; text-transform: uppercase; }
+        .foot-grid a { display: block; padding: 4px 0; color: var(--text-2); font-size: 13.5px; }
+        .foot-grid a:hover { color: var(--text); text-decoration: none; }
+        .copyright {
+            margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border);
+            display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; color: var(--text-3);
+        }
+    </style>
+</head>
+<body>
+
+<header class="nav">
+    <div class="nav-inner">
+        <div class="brand">
+            <div class="brand-mark">C</div>
+            <span>CoinhakoCrypto</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#workflow">Workflow</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#faq">FAQ</a>
+            <a href="#support">Support</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <span class="eyebrow"><span class="dot"></span> Personal Crypto Journal · v1.0</span>
+        <h1 class="hero-title">Track every coin. Master your portfolio. Without giving up your privacy.</h1>
+        <p class="hero-sub">
+            CoinhakoCrypto is a private, distraction-free crypto investment journal for serious retail investors.
+            Record buys, sells, staking rewards, and airdrops — then visualize performance against cost basis in real time.
+        </p>
+        <div class="cta-row">
+            <a class="btn btn-primary" href="#features">Explore features →</a>
+            <a class="btn btn-ghost" href="#privacy">Read privacy notes</a>
+        </div>
+        <div class="hero-meta">
+            <span class="pill">🔒 Local-only data</span>
+            <span class="pill">📵 No exchange connection</span>
+            <span class="pill">🛡 No sign-in, no tracking</span>
+            <span class="pill">📈 Candle · Line · Area charts</span>
+        </div>
+    </div>
+</section>
+
+<section id="features">
+    <div class="container">
+        <div class="section-head">
+            <h2>Everything you need to think clearly about your portfolio</h2>
+            <p>Built end-to-end for journaling and analysis. No trading, no orders, no accounts.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon">📒</div>
+                <h3>Complete transaction log</h3>
+                <p>Record buys, sells, staking rewards, airdrops, and transfers with fees, notes, and timestamps.</p>
+            </div>
+            <div class="card">
+                <div class="icon violet">📊</div>
+                <h3>Portfolio analytics</h3>
+                <p>Interactive donut allocation, normalized performance curve with cost-basis overlay, and per-position metrics.</p>
+            </div>
+            <div class="card">
+                <div class="icon teal">📈</div>
+                <h3>Three native chart styles</h3>
+                <p>Candlestick, line, and area — all rendered in SwiftUI with crosshair scrubbing, six timeframes, and MA7/25/99 overlays.</p>
+            </div>
+            <div class="card">
+                <div class="icon amber">⚖️</div>
+                <h3>Rebalancing planner</h3>
+                <p>Set target weights with sliders and instantly see the dollar impact of bringing your portfolio back to allocation.</p>
+            </div>
+            <div class="card">
+                <div class="icon pink">🔮</div>
+                <h3>Scenario stress-tester</h3>
+                <p>Ask "what if ETH hits $5,000?" and see the projected effect on your holdings in seconds.</p>
+            </div>
+            <div class="card">
+                <div class="icon green">💧</div>
+                <h3>DCA simulator</h3>
+                <p>Project future accumulation under adjustable frequency, volatility, and duration assumptions.</p>
+            </div>
+            <div class="card">
+                <div class="icon orange">🔁</div>
+                <h3>Live converter</h3>
+                <p>Calculate rates across the full coin catalog with your display currency of choice.</p>
+            </div>
+            <div class="card">
+                <div class="icon violet">🔥</div>
+                <h3>Heatmap &amp; compare</h3>
+                <p>See the market at a glance and study two coins side-by-side for deeper research.</p>
+            </div>
+            <div class="card">
+                <div class="icon">📚</div>
+                <h3>Curated insights</h3>
+                <p>A built-in library of educational materials to keep your research on solid ground.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="workflow">
+    <div class="container">
+        <div class="split">
+            <div>
+                <h2>A workspace, not a feed.</h2>
+                <p>
+                    Most crypto apps compete for your attention with notifications, promotions, and social noise.
+                    CoinhakoCrypto is designed as a quiet surface for thinking — clean charts, structured inputs,
+                    and the metrics that actually matter for decision-making.
+                </p>
+                <ul class="checklist">
+                    <li>Average cost, unrealized P/L, realized P/L, total return — surfaced per position.</li>
+                    <li>Normalized performance curve so you can compare assets fairly.</li>
+                    <li>Manual entry only — you stay in control of what is recorded.</li>
+                    <li>No exchange API keys, no order placement, no custodial risk.</li>
+                    <li>Export your data to CSV or plain text whenever you want.</li>
+                </ul>
+            </div>
+            <div class="device" aria-hidden="true">
+                <div class="screen">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                        <strong style="font-size:14px;">Portfolio</strong>
+                        <span style="font-size:12px;color:var(--text-3);">Local · USD</span>
+                    </div>
+                    <div class="kv"><span>Total Value</span><span style="color:var(--text);">$128,420.55</span></div>
+                    <div class="kv"><span>Total Cost</span><span style="color:var(--text);">$92,310.00</span></div>
+                    <div class="kv"><span>Unrealized P/L</span><span style="color:var(--gain);">+$36,110.55</span></div>
+                    <div class="row"><div class="bar fill1"></div></div>
+                    <div class="kv"><span>BTC</span><span style="color:var(--text);">42%</span></div>
+                    <div class="row"><div class="bar fill2"></div></div>
+                    <div class="kv"><span>ETH</span><span style="color:var(--text);">28%</span></div>
+                    <div class="row"><div class="bar fill3"></div></div>
+                    <div class="kv"><span>SOL</span><span style="color:var(--text);">14%</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="values">
+    <div class="container">
+        <div class="section-head">
+            <h2>Designed around what should be the default</h2>
+            <p>Quietly powerful. Honestly scoped. Built to respect your time and your data.</p>
+        </div>
+        <div class="value-grid">
+            <div class="value">
+                <h4>Privacy by default</h4>
+                <p>No sign-in, no cloud sync, no analytics SDKs. Your records never leave the device unless you export them yourself.</p>
+            </div>
+            <div class="value">
+                <h4>No exchange connectivity</h4>
+                <p>The app does not connect to any exchange, broker, or trading venue. It cannot place orders or transmit instructions.</p>
+            </div>
+            <div class="value">
+                <h4>Transparent scope</h4>
+                <p>CoinhakoCrypto is a journaling and analysis tool. It is not investment advice, and it does not claim to be.</p>
+            </div>
+            <div class="value">
+                <h4>Your data, portable</h4>
+                <p>Export to CSV or plain text. Move between devices, archive annually, or import into your tax workflow.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="privacy">
+    <div class="container">
+        <div class="section-head">
+            <h2>Privacy, in one breath</h2>
+            <p>If you want the full version, see our <a href="privacy.html">Privacy Policy</a>.</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="icon green">🟢</div>
+                <h3>What we collect</h3>
+                <p>Nothing about you. CoinhakoCrypto does not collect personal data, identifiers, or device telemetry.</p>
+            </div>
+            <div class="card">
+                <div class="icon amber">📍</div>
+                <h3>Where your data lives</h3>
+                <p>All transactions, holdings, watchlists, and preferences are stored locally on your device.</p>
+            </div>
+            <div class="card">
+                <div class="icon violet">🚫</div>
+                <h3>Permissions asked</h3>
+                <p>None for notifications, biometrics, contacts, location, or push. The app operates entirely offline.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq">
+    <div class="container">
+        <div class="section-head">
+            <h2>Frequently asked questions</h2>
+            <p>Short, honest answers.</p>
+        </div>
+
+        <details>
+            <summary>Does CoinhakoCrypto connect to any exchange?</summary>
+            <p>No. The app is a manual journaling and analysis tool. It does not connect to any exchange, broker, or trading venue, and it cannot place orders.</p>
+        </details>
+        <details>
+            <summary>Where is my data stored?</summary>
+            <p>All data is stored locally on your device. There is no cloud sync and no server-side account. If you delete the app, the data is removed with it — please export first if you need a backup.</p>
+        </details>
+        <details>
+            <summary>Is the price data real-time?</summary>
+            <p>Price information shown in the app is generated locally for demonstration and tracking context. Do not rely on it for real-time price discovery or trade execution decisions.</p>
+        </details>
+        <details>
+            <summary>Does the app ask for any permissions?</summary>
+            <p>No. The app does not request notification, biometric, contacts, or location permissions. It runs entirely offline after the initial setup.</p>
+        </details>
+        <details>
+            <summary>Can I export my data?</summary>
+            <p>Yes. You can export your transactions and holdings to CSV, or generate a plain-text portfolio summary, from the Settings → Export screen.</p>
+        </details>
+        <details>
+            <summary>Is this financial advice?</summary>
+            <p>No. CoinhakoCrypto is a personal journaling tool. Nothing in the app constitutes financial advice or a recommendation to buy or sell any asset. You are responsible for your own decisions.</p>
+        </details>
+    </div>
+</section>
+
+<section id="support">
+    <div class="container">
+        <div class="section-head">
+            <h2>Support</h2>
+            <p>We read every email. Reach out anytime.</p>
+        </div>
+        <div class="card" style="max-width: 720px; margin: 0 auto; text-align: center;">
+            <div class="icon" style="margin: 0 auto 14px;">✉️</div>
+            <h3>Get in touch</h3>
+            <p style="margin: 8px 0 16px;">For questions, feedback, or support requests, write to us at:</p>
+            <p style="font-size: 18px; font-weight: 700;">
+                <a href="mailto:Mefepzavap@icloud.com">Mefepzavap@icloud.com</a>
+            </p>
+            <p style="margin-top: 14px; font-size: 13px;">Please include your device model and iOS version when reporting an issue so we can help faster.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="foot-grid">
+            <div>
+                <div class="brand" style="margin-bottom: 10px;">
+                    <div class="brand-mark">C</div>
+                    <span>CoinhakoCrypto</span>
+                </div>
+                <p>A personal crypto investment journal. Built for clarity, not engagement.</p>
+            </div>
+            <div>
+                <h5>Product</h5>
+                <a href="#features">Features</a>
+                <a href="#workflow">Workflow</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div>
+                <h5>Legal &amp; Support</h5>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="support.html">Support</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="mailto:Mefepzavap@icloud.com">Mefepzavap@icloud.com</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <span>© 2026 CoinhakoCrypto. All rights reserved.</span>
+            <span>Made for thinking clearly about your investments.</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — CoinhakoCrypto</title>
+    <meta name="description" content="Privacy Policy for CoinhakoCrypto, a personal crypto portfolio journal that stores all data locally on your device.">
+    <style>
+        :root {
+            --bg: #0b0f1a;
+            --bg-2: #111726;
+            --card: #161d2f;
+            --border: #232c44;
+            --text: #e8ecf5;
+            --text-2: #a3aec6;
+            --text-3: #6f7a93;
+            --brand: #6366f1;
+            --brand-2: #8b5cf6;
+            --accent: #22d3ee;
+            --gain: #22c55e;
+            --warn: #f59e0b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            background: var(--bg); color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7; -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+        header.nav {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(11,15,26,0.85);
+            backdrop-filter: saturate(160%) blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 24px; max-width: 1100px; margin: 0 auto;
+        }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+        .brand-mark {
+            width: 32px; height: 32px; border-radius: 9px;
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+            display: grid; place-items: center; color: white; font-weight: 900;
+        }
+        .nav-links a { color: var(--text-2); margin-left: 22px; font-size: 14px; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .page-head {
+            padding: 64px 0 32px;
+            background:
+                radial-gradient(800px 400px at 10% -10%, rgba(99,102,241,0.18), transparent 60%);
+        }
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 12px; border-radius: 999px;
+            background: rgba(99,102,241,0.12);
+            color: #c7d2fe; font-size: 12px; font-weight: 600;
+            border: 1px solid rgba(99,102,241,0.3);
+        }
+        h1 {
+            font-size: clamp(30px, 4.5vw, 44px); font-weight: 800;
+            letter-spacing: -0.6px; margin: 16px 0 10px;
+        }
+        .lead { color: var(--text-2); font-size: 16px; }
+        .meta { color: var(--text-3); font-size: 13px; margin-top: 14px; }
+
+        .content { padding: 32px 0 72px; }
+        .content h2 {
+            font-size: 20px; font-weight: 700; margin: 36px 0 12px;
+            letter-spacing: -0.2px;
+        }
+        .content h3 { font-size: 16px; font-weight: 700; margin: 22px 0 8px; color: var(--text); }
+        .content p { color: var(--text-2); margin-bottom: 12px; font-size: 15px; }
+        .content ul { color: var(--text-2); margin: 0 0 14px 18px; font-size: 15px; }
+        .content ul li { margin-bottom: 6px; }
+        .content strong { color: var(--text); }
+
+        .callout {
+            background: linear-gradient(180deg, rgba(34,211,238,0.08), transparent);
+            border: 1px solid rgba(34,211,238,0.3);
+            border-radius: 14px; padding: 16px 18px; margin: 22px 0;
+            color: var(--text-2);
+        }
+        .callout strong { color: var(--text); }
+        .callout.warn {
+            background: linear-gradient(180deg, rgba(245,158,11,0.08), transparent);
+            border-color: rgba(245,158,11,0.3);
+        }
+        .callout.green {
+            background: linear-gradient(180deg, rgba(34,197,94,0.08), transparent);
+            border-color: rgba(34,197,94,0.3);
+        }
+
+        .toc {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 16px 18px; margin-bottom: 22px;
+        }
+        .toc h3 { font-size: 14px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
+        .toc ul { list-style: none; margin: 0; padding: 0; columns: 2; }
+        .toc li { padding: 4px 0; break-inside: avoid; }
+        .toc a { color: var(--text-2); font-size: 14px; }
+        .toc a:hover { color: var(--text); }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0; color: var(--text-3); font-size: 13px;
+        }
+        .foot {
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+        }
+        .foot a { color: var(--text-2); margin-left: 14px; }
+
+        @media (max-width: 640px) {
+            .toc ul { columns: 1; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="brand" style="color: var(--text);">
+            <div class="brand-mark">C</div>
+            <span>CoinhakoCrypto</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#features">Features</a>
+            <a href="support.html">Support</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </div>
+</header>
+
+<section class="page-head">
+    <div class="container">
+        <span class="eyebrow">📄 Privacy Policy</span>
+        <h1>Privacy Policy</h1>
+        <p class="lead">
+            CoinhakoCrypto is built around a simple idea: a private workspace for tracking your crypto portfolio.
+            This policy explains exactly what data the app handles — and what it does not.
+        </p>
+        <p class="meta">Last updated: September 20, 2026 · Effective immediately</p>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+
+        <div class="callout green">
+            <strong>Short version:</strong> CoinhakoCrypto does not collect, transmit, or sell any personal data.
+            All your portfolio data lives locally on your device. The app does not require an account,
+            does not connect to any server, and does not include analytics, tracking, or third-party SDKs.
+        </div>
+
+        <div class="toc">
+            <h3>On this page</h3>
+            <ul>
+                <li><a href="#overview">1. Overview</a></li>
+                <li><a href="#data-collected">2. Data We Collect</a></li>
+                <li><a href="#data-not-collected">3. Data We Do Not Collect</a></li>
+                <li><a href="#permissions">4. Device Permissions</a></li>
+                <li><a href="#local-storage">5. Local Storage</a></li>
+                <li><a href="#third-parties">6. Third-Party Services</a></li>
+                <li><a href="#children">7. Children's Privacy</a></li>
+                <li><a href="#your-rights">8. Your Rights &amp; Choices</a></li>
+                <li><a href="#security">9. Security</a></li>
+                <li><a href="#changes">10. Changes to This Policy</a></li>
+                <li><a href="#contact">11. Contact</a></li>
+            </ul>
+        </div>
+
+        <h2 id="overview">1. Overview</h2>
+        <p>
+            CoinhakoCrypto (the "App") is a personal crypto investment journal and portfolio tracker developed
+            for iOS. The App is designed to operate offline after the initial setup. It does not maintain accounts,
+            does not authenticate users, and does not transmit your portfolio data to any external server operated
+            by the developer.
+        </p>
+        <p>
+            This Privacy Policy describes the data practices of CoinhakoCrypto. Because the App does not collect
+            personal data from you, much of what is typically described in a privacy policy is intentionally short.
+            We believe that is a feature.
+        </p>
+
+        <h2 id="data-collected">2. Data We Collect</h2>
+        <p>
+            <strong>We do not collect any personal data through CoinhakoCrypto.</strong> Specifically, we do not collect:
+        </p>
+        <ul>
+            <li>Name, email address, phone number, or any contact information.</li>
+            <li>Identifiers such as device advertising IDs (IDFA), advertising identifiers, or user IDs.</li>
+            <li>Location data, IP address, or network information.</li>
+            <li>Biometric data (the App does not use Face ID, Touch ID, or any biometric authentication).</li>
+            <li>Financial account credentials, exchange API keys, or wallet keys.</li>
+            <li>Usage analytics, crash reports, telemetry, or performance metrics tied to you.</li>
+        </ul>
+
+        <h2 id="data-not-collected">3. Data We Do Not Collect</h2>
+        <p>
+            For clarity: the App does not collect information about your crypto holdings, transaction history,
+            watchlists, or preferences. None of this data leaves CoinhakoCrypto unless you personally share an
+            exported file (for example, a CSV) with someone else.
+        </p>
+
+        <div class="callout">
+            <strong>Manual exports only.</strong> The only way data leaves the App is when you, the user,
+            actively export a CSV or text file via the iOS share sheet. Those exports are created and
+            transmitted by you, not by CoinhakoCrypto.
+        </div>
+
+        <h2 id="permissions">4. Device Permissions</h2>
+        <p>
+            CoinhakoCrypto does not request any of the following iOS permissions:
+        </p>
+        <ul>
+            <li>Notifications (local or remote push).</li>
+            <li>Camera, Microphone, Photos, or Contacts.</li>
+            <li>Location Services (foreground or background).</li>
+            <li>Face ID / Touch ID / Biometric authentication.</li>
+            <li>Tracking permission under App Tracking Transparency (the App contains no tracking SDKs).</li>
+            <li>Background app refresh, cellular data, or any other optional system capability.</li>
+        </ul>
+
+        <h2 id="local-storage">5. Local Storage</h2>
+        <p>
+            All data you create in CoinhakoCrypto — including transactions, holdings, watchlists, and preferences —
+            is stored locally on your device using standard iOS data protection. The data is sandboxed within the
+            App and is not accessible to other apps or to the developer.
+        </p>
+        <p>
+            Because data is stored locally only:
+        </p>
+        <ul>
+            <li>If you uninstall the App, your data is removed with it. Please export a backup beforehand if needed.</li>
+            <li>If you restore your device from a backup, the data may or may not be included depending on your iOS backup settings.</li>
+            <li>The developer cannot recover lost data, because the developer never receives it.</li>
+        </ul>
+
+        <h2 id="third-parties">6. Third-Party Services</h2>
+        <p>
+            CoinhakoCrypto does not integrate any third-party analytics, advertising, attribution, or marketing SDKs.
+            It does not use Firebase, Google Analytics, Facebook SDK, Adjust, AppsFlyer, Branch, or similar services.
+            It does not embed third-party content that loads over the network.
+        </p>
+        <p>
+            The App does not connect to any cryptocurrency exchange, broker, custodian, or wallet provider.
+            No order placement, authentication, or read-only API access is performed by the App.
+        </p>
+
+        <h2 id="children">7. Children's Privacy</h2>
+        <p>
+            CoinhakoCrypto is intended for users aged 16 and over (or older, depending on your jurisdiction).
+            The App does not knowingly collect any information from children. Because no personal data is collected
+            from anyone, this section exists primarily to confirm that we do not direct the App at children and
+            do not maintain any age-gated data collection.
+        </p>
+
+        <h2 id="your-rights">8. Your Rights &amp; Choices</h2>
+        <p>
+            Because CoinhakoCrypto does not collect personal data from you, most data-subject rights
+            (such as access, correction, or deletion requests) are not applicable — there is no data about you on
+            any server we control.
+        </p>
+        <p>
+            However, you always have full control over the data on your device:
+        </p>
+        <ul>
+            <li>You can edit or delete any transaction, holding, or watchlist entry at any time.</li>
+            <li>You can reset app preferences from Settings → Reset Preferences.</li>
+            <li>You can export your data to CSV or text from Settings → Export.</li>
+            <li>You can uninstall the App to permanently remove all locally stored data.</li>
+        </ul>
+
+        <h2 id="security">9. Security</h2>
+        <p>
+            CoinhakoCrypto benefits from iOS's standard sandboxing and on-device data protection.
+            All local data is isolated within the App's container and protected by the operating system.
+            The App does not transmit data over the network, so there is no server-side attack surface related to
+            your portfolio.
+        </p>
+        <p>
+            No security measure is perfect. You are responsible for maintaining the physical and passcode security
+            of your device. We recommend enabling a strong device passcode and, where appropriate, biometric device unlock.
+        </p>
+
+        <h2 id="changes">10. Changes to This Policy</h2>
+        <p>
+            If we make material changes to this Privacy Policy, we will update the "Last updated" date at the
+            top of this page and, where appropriate, surface a notice inside the App. Because the App does not
+            collect contact information, we cannot notify you by email.
+        </p>
+
+        <div class="callout warn">
+            <strong>Material change principle.</strong> If a future version of CoinhakoCrypto were to introduce
+            optional network-based features, this policy would be updated <em>before</em> such features shipped,
+            and you would be asked to opt in.
+        </div>
+
+        <h2 id="contact">11. Contact</h2>
+        <p>
+            If you have any questions about this Privacy Policy, please contact us at:
+        </p>
+        <p>
+            <strong>Email:</strong> <a href="mailto:Mefepzavap@icloud.com">Mefepzavap@icloud.com</a><br>
+            <strong>App:</strong> CoinhakoCrypto
+        </p>
+        <p>
+            We read every email and will respond as promptly as we can.
+        </p>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container foot">
+        <span>© 2026 CoinhakoCrypto. All rights reserved.</span>
+        <span>
+            <a href="index.html">Home</a>
+            <a href="support.html">Support</a>
+            <a href="terms.html">Terms of Use</a>
+        </span>
+    </div>
+</footer>
+
+</body>
+</html>

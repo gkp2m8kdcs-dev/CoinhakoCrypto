@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — CoinhakoCrypto</title>
+    <meta name="description" content="Get help with CoinhakoCrypto. Contact our support team for questions, feedback, or technical issues.">
+    <style>
+        :root {
+            --bg: #0b0f1a;
+            --bg-2: #111726;
+            --card: #161d2f;
+            --border: #232c44;
+            --text: #e8ecf5;
+            --text-2: #a3aec6;
+            --text-3: #6f7a93;
+            --brand: #6366f1;
+            --brand-2: #8b5cf6;
+            --accent: #22d3ee;
+            --gain: #22c55e;
+            --warn: #f59e0b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            background: var(--bg); color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7; -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+        header.nav {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(11,15,26,0.85);
+            backdrop-filter: saturate(160%) blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 24px; max-width: 1100px; margin: 0 auto;
+        }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--text); }
+        .brand-mark {
+            width: 32px; height: 32px; border-radius: 9px;
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+            display: grid; place-items: center; color: white; font-weight: 900;
+        }
+        .nav-links a { color: var(--text-2); margin-left: 22px; font-size: 14px; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .page-head {
+            padding: 64px 0 24px;
+            background:
+                radial-gradient(800px 400px at 90% -10%, rgba(139,92,246,0.18), transparent 60%);
+        }
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 12px; border-radius: 999px;
+            background: rgba(139,92,246,0.12);
+            color: #ddd6fe; font-size: 12px; font-weight: 600;
+            border: 1px solid rgba(139,92,246,0.3);
+        }
+        h1 {
+            font-size: clamp(30px, 4.5vw, 44px); font-weight: 800;
+            letter-spacing: -0.6px; margin: 16px 0 10px;
+        }
+        .lead { color: var(--text-2); font-size: 16px; }
+
+        .content { padding: 24px 0 64px; }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(99,102,241,0.18), rgba(139,92,246,0.10));
+            border: 1px solid rgba(99,102,241,0.35);
+            border-radius: 18px; padding: 28px; text-align: center;
+            margin-bottom: 36px;
+        }
+        .contact-card .icon {
+            width: 56px; height: 56px; margin: 0 auto 14px;
+            border-radius: 14px; display: grid; place-items: center;
+            background: rgba(99,102,241,0.25); border: 1px solid rgba(99,102,241,0.4);
+        }
+        .contact-card h2 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+        .contact-card p { color: var(--text-2); margin-bottom: 18px; font-size: 15px; }
+        .email {
+            display: inline-block; font-size: 20px; font-weight: 800;
+            padding: 12px 22px; border-radius: 12px;
+            background: var(--card); border: 1px solid var(--border);
+            color: var(--text);
+        }
+        .email:hover { text-decoration: none; border-color: var(--brand); }
+
+        h2.section { font-size: 22px; font-weight: 800; margin: 30px 0 16px; letter-spacing: -0.2px; }
+        h3 { font-size: 16px; font-weight: 700; margin: 18px 0 8px; color: var(--text); }
+        p { color: var(--text-2); margin-bottom: 12px; font-size: 15px; }
+
+        .grid {
+            display: grid; gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            margin: 16px 0 8px;
+        }
+        .card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 18px;
+        }
+        .card .ic {
+            width: 38px; height: 38px; border-radius: 9px;
+            display: grid; place-items: center;
+            background: rgba(99,102,241,0.14); color: var(--brand);
+            border: 1px solid rgba(99,102,241,0.3);
+            margin-bottom: 10px; font-weight: 800;
+        }
+        .card h3 { margin: 0 0 6px; font-size: 15px; }
+        .card p { margin: 0; font-size: 14px; }
+
+        .ic.teal { background: rgba(34,211,238,0.14); color: var(--accent); border-color: rgba(34,211,238,0.3); }
+        .ic.amber { background: rgba(245,158,11,0.14); color: var(--warn); border-color: rgba(245,158,11,0.3); }
+        .ic.green { background: rgba(34,197,94,0.14); color: var(--gain); border-color: rgba(34,197,94,0.3); }
+        .ic.pink { background: rgba(236,72,153,0.14); color: #f472b6; border-color: rgba(236,72,153,0.3); }
+
+        details {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 14px 16px; margin-bottom: 10px;
+        }
+        details summary {
+            cursor: pointer; font-weight: 600; color: var(--text);
+            list-style: none; display: flex; justify-content: space-between; align-items: center;
+        }
+        details summary::-webkit-details-marker { display: none; }
+        details summary::after {
+            content: "+"; color: var(--text-3); font-size: 22px; line-height: 1;
+        }
+        details[open] summary::after { content: "−"; }
+        details p { margin-top: 10px; font-size: 14px; }
+        details ol, details ul { margin: 8px 0 0 20px; color: var(--text-2); font-size: 14px; }
+        details li { margin-bottom: 6px; }
+
+        .callout {
+            background: linear-gradient(180deg, rgba(245,158,11,0.08), transparent);
+            border: 1px solid rgba(245,158,11,0.3);
+            border-radius: 14px; padding: 16px 18px; margin: 22px 0;
+            color: var(--text-2);
+        }
+        .callout strong { color: var(--text); }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0; color: var(--text-3); font-size: 13px;
+        }
+        .foot {
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+        }
+        .foot a { color: var(--text-2); margin-left: 14px; }
+
+        @media (max-width: 640px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+
+<header class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">
+            <div class="brand-mark">C</div>
+            <span>CoinhakoCrypto</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#features">Features</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+    </div>
+</header>
+
+<section class="page-head">
+    <div class="container">
+        <span class="eyebrow">🛠 Support</span>
+        <h1>We're here to help.</h1>
+        <p class="lead">
+            CoinhakoCrypto is a small, focused tool — but we take support seriously.
+            Send us an email and a real person will read it.
+        </p>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+
+        <div class="contact-card">
+            <div class="icon">✉️</div>
+            <h2>Email support</h2>
+            <p>For questions, feedback, feature requests, or bug reports, please write to us at:</p>
+            <a class="email" href="mailto:Mefepzavap@icloud.com">Mefepzavap@icloud.com</a>
+            <p style="margin-top: 18px; font-size: 13px;">
+                Typical response time: within 2 business days. Please include your device model and iOS version.
+            </p>
+        </div>
+
+        <h2 class="section">Common questions</h2>
+
+        <details>
+            <summary>How do I back up my data?</summary>
+            <p>
+                CoinhakoCrypto stores everything locally. To back up, open <strong>Settings → Export Portfolio</strong>
+                and choose one of the following:
+            </p>
+            <ul>
+                <li><strong>Transactions CSV</strong> — every buy, sell, staking, airdrop, and transfer entry with fees and notes.</li>
+                <li><strong>Holdings CSV</strong> — current positions and per-position P/L.</li>
+                <li><strong>Summary Text</strong> — a plain-text snapshot suitable for messaging or archiving.</li>
+            </ul>
+            <p>Save the exported file to Files, iCloud Drive, or share it to another app of your choice.</p>
+        </details>
+
+        <details>
+            <summary>I lost my data after reinstalling — can you help?</summary>
+            <p>
+                Unfortunately, no. Because the App stores data locally and does not sync to any server, we cannot
+                recover data that was removed with the previous install. Going forward, we recommend exporting
+                a backup before uninstalling or before restoring your device.
+            </p>
+        </details>
+
+        <details>
+            <summary>The price shown doesn't match my exchange. Why?</summary>
+            <p>
+                Price information in CoinhakoCrypto is generated locally for demonstration and tracking context.
+                It is not sourced from any exchange in real time. Please do not rely on the App for live trading,
+                and always verify prices on the exchange or aggregator you trust before acting.
+            </p>
+        </details>
+
+        <details>
+            <summary>Can you add a feature that connects to my exchange?</summary>
+            <p>
+                CoinhakoCrypto is intentionally designed as a manual journaling tool and does not connect to any
+                exchange, broker, or trading venue. We believe this is the right product boundary for an app whose
+                job is to help you <em>think</em>, not to execute trades.
+            </p>
+            <p>
+                We do consider feature requests seriously. If you'd like to share one, please email us.
+            </p>
+        </details>
+
+        <details>
+            <summary>Is the App collecting any data about me?</summary>
+            <p>
+                No. CoinhakoCrypto does not collect, transmit, or sell personal data. Please see our
+                <a href="privacy.html">Privacy Policy</a> for the full details.
+            </p>
+        </details>
+
+        <details>
+            <summary>How do I reset my preferences without losing transactions?</summary>
+            <p>
+                Open <strong>Settings → Reset Preferences</strong>. This only resets display and chart preferences —
+                your transactions and holdings are not touched.
+            </p>
+        </details>
+
+        <details>
+            <summary>How do I delete all my data?</summary>
+            <p>
+                Use <strong>Settings → Reseed Sample Data</strong> to clear existing transactions and reload the
+                demo set, or uninstall the App to remove all locally stored data.
+            </p>
+        </details>
+
+        <h2 class="section">Before you write to us</h2>
+
+        <div class="grid">
+            <div class="card">
+                <div class="ic">📱</div>
+                <h3>Include device &amp; iOS</h3>
+                <p>Tell us your iPhone model and iOS version (Settings → General → About).</p>
+            </div>
+            <div class="card">
+                <div class="ic teal">📝</div>
+                <h3>Describe the steps</h3>
+                <p>List the steps you took, what you expected, and what happened instead.</p>
+            </div>
+            <div class="card">
+                <div class="ic amber">📸</div>
+                <h3>Attach a screenshot</h3>
+                <p>If possible, attach a screenshot or screen recording. It almost always speeds things up.</p>
+            </div>
+            <div class="card">
+                <div class="ic green">✅</div>
+                <h3>Privacy-friendly</h3>
+                <p>Don't include your actual holdings. Sample or anonymized values are perfect.</p>
+            </div>
+        </div>
+
+        <div class="callout">
+            <strong>Note:</strong> Support requests are answered in English. Please allow up to 2 business days
+            for a reply. We are a small team and we read every email.
+        </div>
+
+        <h2 class="section">Other ways to reach us</h2>
+        <p>
+            Email is currently our only support channel. We do not operate a live chat, social media support account,
+            or phone line. This is intentional — it keeps our focus on the App and lets us give every message
+            proper attention.
+        </p>
+
+        <p style="margin-top: 22px;">
+            <strong>Email:</strong> <a href="mailto:Mefepzavap@icloud.com">Mefepzavap@icloud.com</a><br>
+            <strong>App:</strong> CoinhakoCrypto
+        </p>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container foot">
+        <span>© 2026 CoinhakoCrypto. All rights reserved.</span>
+        <span>
+            <a href="index.html">Home</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Use</a>
+        </span>
+    </div>
+</footer>
+
+</body>
+</html>

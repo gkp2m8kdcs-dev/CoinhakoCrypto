@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use — CoinhakoCrypto</title>
+    <meta name="description" content="Terms of Use for CoinhakoCrypto, a personal crypto portfolio journal. Read the conditions under which you may use the App.">
+    <style>
+        :root {
+            --bg: #0b0f1a;
+            --bg-2: #111726;
+            --card: #161d2f;
+            --border: #232c44;
+            --text: #e8ecf5;
+            --text-2: #a3aec6;
+            --text-3: #6f7a93;
+            --brand: #6366f1;
+            --brand-2: #8b5cf6;
+            --accent: #22d3ee;
+            --gain: #22c55e;
+            --warn: #f59e0b;
+            --loss: #ef4444;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            background: var(--bg); color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7; -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+        header.nav {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(11,15,26,0.85);
+            backdrop-filter: saturate(160%) blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 24px; max-width: 1100px; margin: 0 auto;
+        }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--text); }
+        .brand-mark {
+            width: 32px; height: 32px; border-radius: 9px;
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+            display: grid; place-items: center; color: white; font-weight: 900;
+        }
+        .nav-links a { color: var(--text-2); margin-left: 22px; font-size: 14px; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+        .page-head {
+            padding: 64px 0 24px;
+            background:
+                radial-gradient(800px 400px at 100% -10%, rgba(34,211,238,0.16), transparent 60%);
+        }
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 12px; border-radius: 999px;
+            background: rgba(34,211,238,0.10);
+            color: #a5f3fc; font-size: 12px; font-weight: 600;
+            border: 1px solid rgba(34,211,238,0.3);
+        }
+        h1 {
+            font-size: clamp(30px, 4.5vw, 44px); font-weight: 800;
+            letter-spacing: -0.6px; margin: 16px 0 10px;
+        }
+        .lead { color: var(--text-2); font-size: 16px; }
+        .meta { color: var(--text-3); font-size: 13px; margin-top: 14px; }
+
+        .content { padding: 24px 0 72px; }
+        .content h2 {
+            font-size: 20px; font-weight: 700; margin: 36px 0 12px;
+            letter-spacing: -0.2px;
+        }
+        .content h3 { font-size: 16px; font-weight: 700; margin: 20px 0 8px; color: var(--text); }
+        .content p { color: var(--text-2); margin-bottom: 12px; font-size: 15px; }
+        .content ul { color: var(--text-2); margin: 0 0 14px 18px; font-size: 15px; }
+        .content ul li { margin-bottom: 6px; }
+        .content strong { color: var(--text); }
+
+        .callout {
+            background: linear-gradient(180deg, rgba(34,211,238,0.08), transparent);
+            border: 1px solid rgba(34,211,238,0.3);
+            border-radius: 14px; padding: 16px 18px; margin: 22px 0;
+            color: var(--text-2);
+        }
+        .callout strong { color: var(--text); }
+        .callout.warn {
+            background: linear-gradient(180deg, rgba(245,158,11,0.08), transparent);
+            border-color: rgba(245,158,11,0.3);
+        }
+        .callout.danger {
+            background: linear-gradient(180deg, rgba(239,68,68,0.08), transparent);
+            border-color: rgba(239,68,68,0.3);
+        }
+
+        .toc {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 16px 18px; margin-bottom: 22px;
+        }
+        .toc h3 { font-size: 14px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
+        .toc ul { list-style: none; margin: 0; padding: 0; columns: 2; }
+        .toc li { padding: 4px 0; break-inside: avoid; }
+        .toc a { color: var(--text-2); font-size: 14px; }
+        .toc a:hover { color: var(--text); }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0; color: var(--text-3); font-size: 13px;
+        }
+        .foot {
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+        }
+        .foot a { color: var(--text-2); margin-left: 14px; }
+
+        @media (max-width: 640px) {
+            .toc ul { columns: 1; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">
+            <div class="brand-mark">C</div>
+            <span>CoinhakoCrypto</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<section class="page-head">
+    <div class="container">
+        <span class="eyebrow">📄 Terms of Use</span>
+        <h1>Terms of Use</h1>
+        <p class="lead">
+            These Terms of Use govern your use of CoinhakoCrypto (the "App"). By downloading, installing,
+            or using the App, you agree to these Terms. Please read them carefully.
+        </p>
+        <p class="meta">Last updated: September 20, 2026 · Effective immediately</p>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container">
+
+        <div class="callout">
+            <strong>Summary:</strong> CoinhakoCrypto is a personal journaling tool — not an exchange,
+            broker, or financial advisor. It does not collect your data, does not place trades, and does not
+            provide investment advice. Use it as a thinking surface, and please back up your own data.
+        </div>
+
+        <div class="toc">
+            <h3>On this page</h3>
+            <ul>
+                <li><a href="#acceptance">1. Acceptance of Terms</a></li>
+                <li><a href="#eligibility">2. Eligibility</a></li>
+                <li><a href="#license">3. License to Use the App</a></li>
+                <li><a href="#not-advice">4. Not Financial Advice</a></li>
+                <li><a href="#no-exchange">5. No Exchange or Trading</a></li>
+                <li><a href="#data-responsibility">6. Your Data, Your Responsibility</a></li>
+                <li><a href="#acceptable-use">7. Acceptable Use</a></li>
+                <li><a href="#ip">8. Intellectual Property</a></li>
+                <li><a href="#third-party">9. Third-Party Services</a></li>
+                <li><a href="#disclaimers">10. Disclaimers &amp; Warranties</a></li>
+                <li><a href="#liability">11. Limitation of Liability</a></li>
+                <li><a href="#indemnification">12. Indemnification</a></li>
+                <li><a href="#termination">13. Termination</a></li>
+                <li><a href="#changes">14. Changes to These Terms</a></li>
+                <li><a href="#governing-law">15. Governing Law</a></li>
+                <li><a href="#contact">16. Contact</a></li>
+            </ul>
+        </div>
+
+        <h2 id="acceptance">1. Acceptance of Terms</h2>
+        <p>
+            By downloading, installing, or using CoinhakoCrypto, you confirm that you have read, understood,
+            and agree to be bound by these Terms of Use, our
+            <a href="privacy.html">Privacy Policy</a>, and any additional terms that may apply within the App.
+            If you do not agree, please do not install or use the App and delete it from your device.
+        </p>
+
+        <h2 id="eligibility">2. Eligibility</h2>
+        <p>
+            You must be of legal age in your jurisdiction to use the App and to record your own financial information.
+            By using the App, you represent and warrant that you meet this requirement and that you are legally
+            permitted to keep records of your personal investment activity in your country of residence.
+        </p>
+        <p>
+            The App is intended for personal, non-commercial use as a journaling and analysis tool.
+        </p>
+
+        <h2 id="license">3. License to Use the App</h2>
+        <p>
+            Subject to your compliance with these Terms, you are granted a limited, non-exclusive,
+            non-transferable, revocable license to install and use CoinhakoCrypto on iOS devices you own or control,
+            solely for your personal, non-commercial journaling and analysis purposes.
+        </p>
+        <p>
+            You may not:
+        </p>
+        <ul>
+            <li>Resell, rent, lease, sublicense, or commercially exploit the App.</li>
+            <li>Reverse engineer, decompile, or attempt to extract the source code of the App, except where explicitly permitted by applicable law.</li>
+            <li>Modify, adapt, translate, or create derivative works based on the App.</li>
+            <li>Remove, alter, or obscure any copyright, trademark, or other proprietary notices contained in the App.</li>
+        </ul>
+
+        <h2 id="not-advice">4. Not Financial Advice</h2>
+
+        <div class="callout warn">
+            <strong>Important.</strong> CoinhakoCrypto is a personal journaling and analysis tool only.
+            The content, features, calculations, charts, and educational materials provided within the App
+            <em>do not constitute</em> financial advice, investment advice, tax advice, or a recommendation
+            to buy, sell, or hold any asset.
+        </div>
+        <p>
+            Nothing in the App should be interpreted as solicitation, endorsement, or promotion of any particular
+            cryptocurrency, strategy, exchange, or service. Past performance of any asset does not guarantee
+            future results. Cryptocurrency assets are volatile and may result in partial or total loss of capital.
+        </p>
+        <p>
+            You are solely responsible for your investment decisions. You should consult a qualified,
+            licensed financial professional before making any financial decision. The developer of CoinhakoCrypto
+            is not a registered investment advisor, broker, dealer, or financial planner.
+        </p>
+
+        <h2 id="no-exchange">5. No Exchange or Trading</h2>
+        <p>
+            CoinhakoCrypto does <strong>not</strong> connect to any cryptocurrency exchange, broker, custodian,
+            trading venue, or wallet provider. The App:
+        </p>
+        <ul>
+            <li>Does not place, route, or transmit orders of any kind.</li>
+            <li>Does not store, manage, or transmit exchange API keys, wallet keys, or seed phrases.</li>
+            <li>Does not custody or transmit any digital asset.</li>
+            <li>Does not execute trades on your behalf or anyone else's behalf.</li>
+        </ul>
+        <p>
+            Any transaction record you create in the App is a manual journal entry for tracking purposes.
+            It is not an instruction, an order, or a confirmation of an actual transaction. You are responsible
+            for keeping authoritative records of your real transactions separately.
+        </p>
+
+        <h2 id="data-responsibility">6. Your Data, Your Responsibility</h2>
+        <p>
+            All data you enter into CoinhakoCrypto is stored locally on your device. The developer does not have
+            access to your data and cannot recover it. You are solely responsible for:
+        </p>
+        <ul>
+            <li>Maintaining backups of your transaction history and holdings (Settings → Export Portfolio).</li>
+            <li>The accuracy of any entries you record.</li>
+            <li>Keeping your device physically and digitally secure (passcode, biometrics, etc.).</li>
+            <li>Understanding that uninstalling the App will permanently delete all locally stored data.</li>
+        </ul>
+
+        <h2 id="acceptable-use">7. Acceptable Use</h2>
+        <p>You agree not to use the App to:</p>
+        <ul>
+            <li>Violate any applicable law or regulation.</li>
+            <li>Infringe the rights of any third party.</li>
+            <li>Upload or transmit content that is unlawful, misleading, or infringing.</li>
+            <li>Attempt to disrupt, compromise, or otherwise harm the App or any related systems.</li>
+            <li>Use the App for any commercial trading, broker, or advisory activity.</li>
+        </ul>
+
+        <h2 id="ip">8. Intellectual Property</h2>
+        <p>
+            The App, including its design, code, graphics, charts, icons, text, and the CoinhakoCrypto name and marks,
+            is the property of the developer and is protected by copyright, trademark, and other intellectual
+            property laws. Nothing in these Terms grants you any right to use the developer's trademarks,
+            logos, or brand elements without prior written permission.
+        </p>
+
+        <h2 id="third-party">9. Third-Party Services</h2>
+        <p>
+            The App does not embed or integrate any third-party analytics, advertising, social, or tracking services.
+            Where you choose to use Apple's iOS share sheet to export data, that interaction is governed by
+            Apple's terms and your relationship with Apple. The developer is not responsible for third-party
+            services you choose to interact with.
+        </p>
+
+        <h2 id="disclaimers">10. Disclaimers &amp; Warranties</h2>
+
+        <div class="callout warn">
+            <strong>Provided "as is."</strong> The App is provided on an "as is" and "as available" basis,
+            without warranties of any kind, express or implied, including but not limited to implied warranties
+            of merchantability, fitness for a particular purpose, accuracy, and non-infringement.
+        </div>
+        <p>
+            The developer does not warrant that:
+        </p>
+        <ul>
+            <li>The App will be uninterrupted, error-free, or free of harmful components.</li>
+            <li>Any prices, calculations, charts, or analytics shown are accurate, complete, or current.</li>
+            <li>Defects will be corrected or that the App will meet your particular requirements.</li>
+        </ul>
+
+        <h2 id="liability">11. Limitation of Liability</h2>
+        <p>
+            To the maximum extent permitted by applicable law, in no event shall the developer, its affiliates,
+            officers, directors, employees, or licensors be liable for any indirect, incidental, special,
+            consequential, or punitive damages, including but not limited to:
+        </p>
+        <ul>
+            <li>Loss of profits, revenue, data, or goodwill.</li>
+            <li>Trading losses, investment losses, or tax penalties.</li>
+            <li>Loss of records stored locally on your device.</li>
+            <li>Any damages arising from your use of, or inability to use, the App.</li>
+        </ul>
+        <p>
+            The developer's total aggregate liability for any claim arising out of or relating to the App shall
+            not exceed the amount you paid, if any, for the App (which may be zero for a free download).
+        </p>
+
+        <h2 id="indemnification">12. Indemnification</h2>
+        <p>
+            You agree to indemnify and hold the developer harmless from any claim, demand, loss, liability,
+            damage, or expense (including reasonable legal fees) arising out of your use of the App, your
+            violation of these Terms, or your violation of any third-party right or applicable law.
+        </p>
+
+        <h2 id="termination">13. Termination</h2>
+        <p>
+            These Terms remain in effect while you use the App. You may terminate them at any time by
+            uninstalling the App. The developer may suspend or terminate your access if you breach these Terms
+            or if the App is withdrawn from distribution. Upon termination:
+        </p>
+        <ul>
+            <li>The license granted in Section 3 ends.</li>
+            <li>You must stop using the App and may uninstall it from your device.</li>
+            <li>Provisions that by their nature should survive termination will survive (including but not limited to Disclaimers, Limitation of Liability, and Governing Law).</li>
+        </ul>
+
+        <h2 id="changes">14. Changes to These Terms</h2>
+        <p>
+            The developer may update these Terms from time to time. Material changes will be reflected by an
+            updated "Last updated" date at the top of this page and, where appropriate, a notice within the App.
+            Your continued use of the App after changes take effect constitutes acceptance of the updated Terms.
+        </p>
+
+        <h2 id="governing-law">15. Governing Law</h2>
+        <p>
+            These Terms are governed by and construed in accordance with applicable consumer-protection and
+            contract laws in the developer's jurisdiction of residence, without regard to its conflict-of-law
+            principles. Nothing in this section removes any mandatory protection you are entitled to under the
+            laws of your country of residence.
+        </p>
+        <p>
+            If any provision of these Terms is held to be invalid or unenforceable, the remaining provisions
+            will remain in full force and effect.
+        </p>
+
+        <h2 id="contact">16. Contact</h2>
+        <p>
+            If you have any questions about these Terms, please contact us at:
+        </p>
+        <p>
+            <strong>Email:</strong> <a href="mailto:Mefepzavap@icloud.com">Mefepzavap@icloud.com</a><br>
+            <strong>App:</strong> CoinhakoCrypto
+        </p>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container foot">
+        <span>© 2026 CoinhakoCrypto. All rights reserved.</span>
+        <span>
+            <a href="index.html">Home</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </span>
+    </div>
+</footer>
+
+</body>
+</html>
